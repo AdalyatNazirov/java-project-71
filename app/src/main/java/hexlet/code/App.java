@@ -17,6 +17,10 @@ import java.util.jar.Manifest;
         description = "Compares two configuration files and shows a difference.")
 public class App implements Callable<Integer> {
 
+    private static final int SUCCESS_EXIT_CODE = 0;
+    private static final int ERROR_EXIT_CODE = 1;
+
+
     @Option(names = {"-V", "--version"}, versionHelp = true, description = "Show this help message and exit.")
     boolean versionInfoRequested;
 
@@ -24,14 +28,18 @@ public class App implements Callable<Integer> {
     boolean usageHelpRequested;
 
     @Override
-    public Integer call() throws Exception {
+    public Integer call() {
         try {
-            Differ.doWork();
-            return 0;
+            var filePath1 = "";
+            var filePath2 = "";
+            var diff = Differ.generate(filePath1, filePath2);
+            System.out.println(diff);
         } catch (Exception e) {
-            e.printStackTrace();
-            return 1;
+            System.err.println(e.getMessage());
+            return ERROR_EXIT_CODE;
         }
+
+        return SUCCESS_EXIT_CODE;
     }
 
     public static void main(String[] args) {

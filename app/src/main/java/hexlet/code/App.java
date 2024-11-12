@@ -3,6 +3,7 @@ package hexlet.code;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,19 +21,22 @@ public class App implements Callable<Integer> {
     private static final int SUCCESS_EXIT_CODE = 0;
     private static final int ERROR_EXIT_CODE = 1;
 
+    @Option(names = {"-f", "--format"},
+            defaultValue = "stylish",
+            paramLabel = "format",
+            description = "output format [default: ${DEFAULT-VALUE}]")
+    private String formatName;
 
-    @Option(names = {"-V", "--version"}, versionHelp = true, description = "Show this help message and exit.")
-    boolean versionInfoRequested;
+    @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
+    private String filepath1;
 
-    @Option(names = {"-h", "--help"}, usageHelp = true, description = "Print version information and exit.")
-    boolean usageHelpRequested;
+    @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
+    private String filepath2;
 
     @Override
     public Integer call() {
         try {
-            var filePath1 = "";
-            var filePath2 = "";
-            var diff = Differ.generate(filePath1, filePath2);
+            var diff = Differ.generate(filepath1, filepath2, formatName);
             System.out.println(diff);
         } catch (Exception e) {
             System.err.println(e.getMessage());

@@ -1,10 +1,10 @@
 package hexlet.code;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeSet;
@@ -17,33 +17,35 @@ public class Differ {
     }
 
     public static String generate(String filepath1, String filepath2, String formatName) throws Exception {
-        var data1 = Parser.getData(readFile(filepath1));
-        var data2 = Parser.getData(readFile(filepath2));
+        var data1 = getData(filepath1);
+        var data2 = getData(filepath2);
 
         var keys = new TreeSet<>(data1.keySet());
         keys.addAll(data2.keySet());
 
-        var diff = new LinkedHashMap<String, Map<String, String>>();
+        var diff = new LinkedHashMap<String, NodeDiff>();
         keys.forEach(key -> {
-            var node = new HashMap<String, String>();
+            var node = new NodeDiff(key);
             if (!data1.containsKey(key)) {
-                node.put("action", "added");
-                node.put("value", data2.get(key).toString());
+                node.setAction("added");
             } else if (!data2.containsKey(key)) {
-                node.put("action", "deleted");
-                node.put("value", data1.get(key).toString());
+                node.setAction("deleted");
             } else if (data1.get(key).equals(data2.get(key))) {
-                node.put("action", "unchanged");
-                node.put("value", data1.get(key).toString());
+                node.setAction("unchanged");
             } else {
-                node.put("action", "changed");
-                node.put("value1", data1.get(key).toString());
-                node.put("value2", data2.get(key).toString());
+                node.setAction("changed");
             }
+            node.setValueOld(String.valueOf(data1.get(key)));
+            node.setValueNew(String.valueOf(data2.get(key)));
             diff.put(key, node);
         });
 
         return Formatter.format(diff, formatName);
+    }
+
+    private static Map<String, Object> getData(String filepath) throws Exception {
+        var content = readFile(filepath);
+        return Parser.parse(content);
     }
 
     private static String readFile(String filePath) throws IOException {
@@ -52,6 +54,10 @@ public class Differ {
     }
 
     private static String readFile(Path filePath) throws IOException {
+        if (Files.notExists(filePath)) {
+            throw new FileNotFoundException(filePath.toString());
+        }
+
         return Files.readString(filePath);
     }
 }

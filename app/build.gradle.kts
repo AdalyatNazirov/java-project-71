@@ -19,8 +19,14 @@ repositories {
 }
 
 dependencies {
+    compileOnly("org.projectlombok:lombok:1.18.34")
+    annotationProcessor("org.projectlombok:lombok:1.18.34")
+
     implementation("info.picocli:picocli:4.7.6")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.1")
+
+    testCompileOnly("org.projectlombok:lombok:1.18.34")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.34")
 
     testImplementation(platform("org.junit:junit-bom:5.10.3"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.3")

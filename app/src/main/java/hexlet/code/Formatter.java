@@ -26,6 +26,8 @@ public class Formatter {
                     sb.append("- ").append(key).append(": ").append(diff.getValueOld()).append("\n\t");
                     sb.append("+ ").append(key).append(": ").append(diff.getValueNew());
                     break;
+                default:
+                    break;
             }
             sb.append("\n");
         }

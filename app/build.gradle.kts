@@ -27,7 +27,8 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.34")
 
     implementation("info.picocli:picocli:4.7.6")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.1")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.1")
 
     testCompileOnly("org.projectlombok:lombok:1.18.34")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.34")

@@ -44,8 +44,9 @@ public class Differ {
     }
 
     private static Map<String, Object> getData(String filepath) throws Exception {
+
         var content = readFile(filepath);
-        return Parser.parse(content);
+        return Parser.parse(content, getFileExtension(filepath));
     }
 
     private static String readFile(String filePath) throws IOException {
@@ -60,4 +61,18 @@ public class Differ {
 
         return Files.readString(filePath);
     }
+
+    private static String getFileExtension(String fileName) {
+        if (fileName == null || fileName.isEmpty()) {
+            return "";
+        }
+
+        int dotIndex = fileName.lastIndexOf('.');
+        if (dotIndex == -1 || dotIndex == fileName.length() - 1) {
+            return ""; // No extension found
+        }
+
+        return fileName.substring(dotIndex + 1);
+    }
+
 }

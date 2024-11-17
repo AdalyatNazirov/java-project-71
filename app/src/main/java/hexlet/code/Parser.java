@@ -23,7 +23,7 @@ public class Parser {
     }
 
     public static Map<String, Object> parse(String content, String fileFormat) throws JsonProcessingException {
-        return switch (fileFormat) {
+        return switch (fileFormat.toLowerCase()) {
             case "json" -> parseJson(content);
             case "yaml", "yml" -> parseYaml(content);
             default -> throw new InvalidParameterException("file format not supported: " + fileFormat);

@@ -4,8 +4,15 @@ import java.util.Map;
 
 public class Formatter {
 
-
     public static String format(Map<String, NodeDiff> data, String format) {
+        return switch (format.toLowerCase()) {
+            case "stylish" -> formatStylish(data);
+            default -> throw new IllegalArgumentException("Unsupported format: " + format);
+        };
+    }
+
+
+    private static String formatStylish(Map<String, NodeDiff> data) {
         StringBuilder sb = new StringBuilder();
         sb.append("{\n");
         for (Map.Entry<String, NodeDiff> entry : data.entrySet()) {

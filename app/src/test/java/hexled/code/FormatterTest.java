@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-public class FormatTest {
+public class FormatterTest {
 
     @Test
     public void testFormatStylishWhenAdded() {

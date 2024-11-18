@@ -8,8 +8,8 @@ import lombok.Setter;
 public class NodeDiff {
     private String key;
     private String action;
-    private String valueOld;
-    private String valueNew;
+    private Object valueOld;
+    private Object valueNew;
 
     public NodeDiff(String key) {
         this.setKey(key);

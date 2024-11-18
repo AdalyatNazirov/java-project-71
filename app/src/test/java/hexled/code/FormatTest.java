@@ -113,4 +113,10 @@ public class FormatTest {
                 "",
                 Formatter.format(Map.of("key", node), "plain"));
     }
+
+    @Test
+    public void throwErrorIfFormatNotSupported() {
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                Formatter.format(Map.of(), "json"));
+    }
 }

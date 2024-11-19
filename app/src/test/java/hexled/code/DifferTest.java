@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class DifferTest {
+public final class DifferTest {
     @ParameterizedTest
     @ValueSource(strings = {"yaml", "json"})
     public void testDiffForFile(String extension) throws Exception {

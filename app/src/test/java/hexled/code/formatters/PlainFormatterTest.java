@@ -11,7 +11,7 @@ public class PlainFormatterTest {
     @Test
     public void testFormatPlainWhenAdded() {
 
-        var node = new NodeDiff("key");
+        var node = new NodeDiff();
         node.setValueNew("value");
         node.setAction("added");
 
@@ -23,7 +23,7 @@ public class PlainFormatterTest {
     @Test
     public void testFormatPlainWhenRemoved() {
 
-        var node = new NodeDiff("key");
+        var node = new NodeDiff();
         node.setValueOld("value");
         node.setAction("deleted");
 
@@ -35,7 +35,7 @@ public class PlainFormatterTest {
     @Test
     public void testFormatPlainWhenChanged() {
 
-        var node = new NodeDiff("key");
+        var node = new NodeDiff();
         node.setValueOld("valueOld");
         node.setValueNew("valueNew");
         node.setAction("changed");
@@ -48,7 +48,7 @@ public class PlainFormatterTest {
     @Test
     public void testFormatPlainWhenUnchanged() {
 
-        var node = new NodeDiff("key");
+        var node = new NodeDiff();
         node.setValueOld("value");
         node.setValueNew("value");
         node.setAction("unchanged");

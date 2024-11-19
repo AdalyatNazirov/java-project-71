@@ -26,7 +26,7 @@ public class Differ {
 
         var diff = new LinkedHashMap<String, NodeDiff>();
         keys.forEach(key -> {
-            var node = new NodeDiff(key);
+            var node = new NodeDiff();
             if (!data1.containsKey(key)) {
                 node.setAction("added");
             } else if (!data2.containsKey(key)) {

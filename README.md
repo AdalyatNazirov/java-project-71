@@ -5,3 +5,4 @@
 2. Support Yaml [Step 8](https://asciinema.org/a/091FKuEfY71zO5yr8w9nNi0hx)
 3. Support JSON [Step 9](https://asciinema.org/a/40JuAiZQOkHb6Qk22mLT75088)
 4. Format as plain text [Step 10](https://asciinema.org/a/wxGZgjCyCUpVCZ4DAbTNFMT4K)
+5. Support Json [Step 11](https://asciinema.org/a/EepZiTJ7K5zpERteU7jFc7W6q)

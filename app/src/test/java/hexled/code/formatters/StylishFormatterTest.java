@@ -12,7 +12,7 @@ public class StylishFormatterTest {
     @Test
     public void testFormatStylishWhenAdded() {
 
-        var node = new NodeDiff("key");
+        var node = new NodeDiff();
         node.setValueNew("value");
         node.setAction("added");
 
@@ -25,7 +25,7 @@ public class StylishFormatterTest {
     @Test
     public void testFormatStylishWhenRemoved() {
 
-        var node = new NodeDiff("key");
+        var node = new NodeDiff();
         node.setValueOld("value");
         node.setAction("deleted");
 
@@ -38,7 +38,7 @@ public class StylishFormatterTest {
     @Test
     public void testFormatStylishWhenChanged() {
 
-        var node = new NodeDiff("key");
+        var node = new NodeDiff();
         node.setValueOld("valueOld");
         node.setValueNew("valueNew");
         node.setAction("changed");
@@ -53,7 +53,7 @@ public class StylishFormatterTest {
     @Test
     public void testFormatStylishWhenUnchanged() {
 
-        var node = new NodeDiff("key");
+        var node = new NodeDiff();
         node.setValueOld("value");
         node.setValueNew("value");
         node.setAction("unchanged");

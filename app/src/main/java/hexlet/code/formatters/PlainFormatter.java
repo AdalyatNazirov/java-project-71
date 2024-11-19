@@ -4,7 +4,17 @@ import hexlet.code.NodeDiff;
 
 import java.util.Map;
 
+/**
+ * Provides a utility method for formatting a map of node differences as a plain string.
+ */
 public class PlainFormatter {
+
+    /**
+     * Formats a map of node differences as a plain string.
+     *
+     * @param data the map of node differences to format
+     * @return the plain formatted string representation of the data
+     */
     public static String format(Map<String, NodeDiff> data) {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, NodeDiff> entry : data.entrySet()) {

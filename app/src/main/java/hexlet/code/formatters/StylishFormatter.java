@@ -4,7 +4,17 @@ import hexlet.code.NodeDiff;
 
 import java.util.Map;
 
+/**
+ * Provides a utility method for formatting a map of node differences as a stylish string.
+ */
 public class StylishFormatter {
+
+    /**
+     * Formats a map of node differences as a Stylish string.
+     *
+     * @param data the map of node differences to format
+     * @return the stylish formatted string representation of the data
+     */
     public static String format(Map<String, NodeDiff> data) {
         StringBuilder sb = new StringBuilder();
         sb.append("{\n");

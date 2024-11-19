@@ -10,13 +10,33 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeSet;
 
+/**
+ * Compares two files and generates a string representation of their differences.
+ */
 public class Differ {
     private static final String DEFAULT_FORMATTER = "stylish";
 
+    /**
+     * Generates a string representation of the differences between two files using the default formatter.
+     *
+     * @param filepath1 the path to the first file
+     * @param filepath2 the path to the second file
+     * @return a string representation of the differences between the two files
+     * @throws Exception if an error occurs during file reading or parsing
+     */
     public static String generate(String filepath1, String filepath2) throws Exception {
         return generate(filepath1, filepath2, DEFAULT_FORMATTER);
     }
 
+    /**
+     * Generates a string representation of the differences between two files using the specified formatter.
+     *
+     * @param filepath1  the path to the first file
+     * @param filepath2  the path to the second file
+     * @param formatName the name of the formatter to use (e.g. "stylish", "plain", "json")
+     * @return a string representation of the differences between the two files
+     * @throws Exception if an error occurs during file reading or parsing
+     */
     public static String generate(String filepath1, String filepath2, String formatName) throws Exception {
         var data1 = getData(filepath1);
         var data2 = getData(filepath2);

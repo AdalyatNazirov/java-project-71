@@ -21,7 +21,7 @@ public class StylishFormatter {
         for (Map.Entry<String, NodeDiff> entry : data.entrySet()) {
             String key = entry.getKey();
             NodeDiff diff = entry.getValue();
-            sb.append("\t");
+            sb.append("  ");
             switch (diff.getAction()) {
                 case "added":
                     sb.append("+ ").append(key).append(": ").append(getJsonValue(diff.getValueNew()));
@@ -33,7 +33,8 @@ public class StylishFormatter {
                     sb.append("  ").append(key).append(": ").append(getJsonValue(diff.getValueNew()));
                     break;
                 case "changed":
-                    sb.append("- ").append(key).append(": ").append(getJsonValue(diff.getValueOld())).append("\n\t");
+                    sb.append("- ").append(key).append(": ").append(getJsonValue(diff.getValueOld())).append("\n");
+                    sb.append("  ");
                     sb.append("+ ").append(key).append(": ").append(getJsonValue(diff.getValueNew()));
                     break;
                 default:

@@ -18,7 +18,7 @@ public class StylishFormatterTest {
 
         Assertions.assertEquals("""
                 {
-                \t+ key: value
+                  + key: value
                 }""", StylishFormatter.format(Map.of("key", node)));
     }
 
@@ -31,7 +31,7 @@ public class StylishFormatterTest {
 
         Assertions.assertEquals("""
                 {
-                \t- key: value
+                  - key: value
                 }""", StylishFormatter.format(Map.of("key", node)));
     }
 
@@ -45,8 +45,8 @@ public class StylishFormatterTest {
 
         Assertions.assertEquals("""
                 {
-                \t- key: valueOld
-                \t+ key: valueNew
+                  - key: valueOld
+                  + key: valueNew
                 }""", StylishFormatter.format(Map.of("key", node)));
     }
 
@@ -60,7 +60,7 @@ public class StylishFormatterTest {
 
         Assertions.assertEquals("""
                 {
-                \t  key: value
+                    key: value
                 }""", StylishFormatter.format(Map.of("key", node)));
     }
 }

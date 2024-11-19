@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Map;
 
-public class ParserTest {
+public final class ParserTest {
     @Test
     public void testParseJson() throws JsonProcessingException {
         Assertions.assertEquals(

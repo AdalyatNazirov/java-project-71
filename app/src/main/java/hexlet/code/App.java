@@ -65,7 +65,9 @@ public class App implements Callable<Integer> {
                     Manifest manifest = new Manifest(url.openStream());
                     if (isApplicableManifest(manifest)) {
                         Attributes attr = manifest.getMainAttributes();
-                        String title = attr.getValue(Attributes.Name.IMPLEMENTATION_TITLE);
+//                        String title = attr.getValue(Attributes.Name.IMPLEMENTATION_TITLE);
+                        Command command = App.class.getAnnotation(Command.class);
+                        String title = command.name();
                         String version = attr.getValue(Attributes.Name.IMPLEMENTATION_VERSION);
                         return new String[]{title + " " + version};
                     }
@@ -78,7 +80,7 @@ public class App implements Callable<Integer> {
 
         private boolean isApplicableManifest(Manifest manifest) {
             Attributes attributes = manifest.getMainAttributes();
-            return "gendiff".equals(get(
+            return "app".equals(get(
                     attributes,
                     "Implementation-Title")); // Adjust to match your project's name or title
         }

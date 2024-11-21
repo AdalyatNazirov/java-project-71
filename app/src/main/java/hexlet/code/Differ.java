@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.TreeSet;
 
 /**
  * Compares two files and generates a string representation of their differences.
@@ -41,25 +38,7 @@ public class Differ {
         var data1 = getData(filepath1);
         var data2 = getData(filepath2);
 
-        var keys = new TreeSet<>(data1.keySet());
-        keys.addAll(data2.keySet());
-
-        var diff = new LinkedHashMap<String, NodeDiff>();
-        keys.forEach(key -> {
-            var node = new NodeDiff();
-            if (!data1.containsKey(key)) {
-                node.setAction("added");
-            } else if (!data2.containsKey(key)) {
-                node.setAction("deleted");
-            } else if (Objects.equals(data1.get(key), data2.get(key))) {
-                node.setAction("unchanged");
-            } else {
-                node.setAction("changed");
-            }
-            node.setValue1(data1.get(key));
-            node.setValue2(data2.get(key));
-            diff.put(key, node);
-        });
+        var diff = DiffProcessor.compareMaps(data1, data2);
 
         return Formatter.format(diff, formatName);
     }

@@ -56,8 +56,8 @@ public class Differ {
             } else {
                 node.setAction("changed");
             }
-            node.setValueOld(data1.get(key));
-            node.setValueNew(data2.get(key));
+            node.setValue1(data1.get(key));
+            node.setValue2(data2.get(key));
             diff.put(key, node);
         });
 

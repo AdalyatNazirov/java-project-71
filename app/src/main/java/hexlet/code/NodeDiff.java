@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class NodeDiff {
     private String action;
-    private Object valueOld;
-    private Object valueNew;
+    private Object value1;
+    private Object value2;
 }

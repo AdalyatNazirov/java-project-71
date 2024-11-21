@@ -12,7 +12,7 @@ public class PlainFormatterTest {
     public void testFormatPlainWhenAdded() {
 
         var node = new NodeDiff();
-        node.setValueNew("value");
+        node.setValue2("value");
         node.setAction("added");
 
         Assertions.assertEquals(
@@ -24,7 +24,7 @@ public class PlainFormatterTest {
     public void testFormatPlainWhenRemoved() {
 
         var node = new NodeDiff();
-        node.setValueOld("value");
+        node.setValue1("value");
         node.setAction("deleted");
 
         Assertions.assertEquals(
@@ -36,8 +36,8 @@ public class PlainFormatterTest {
     public void testFormatPlainWhenChanged() {
 
         var node = new NodeDiff();
-        node.setValueOld("valueOld");
-        node.setValueNew("valueNew");
+        node.setValue1("valueOld");
+        node.setValue2("valueNew");
         node.setAction("changed");
 
         Assertions.assertEquals(
@@ -49,8 +49,8 @@ public class PlainFormatterTest {
     public void testFormatPlainWhenUnchanged() {
 
         var node = new NodeDiff();
-        node.setValueOld("value");
-        node.setValueNew("value");
+        node.setValue1("value");
+        node.setValue2("value");
         node.setAction("unchanged");
 
         Assertions.assertEquals(

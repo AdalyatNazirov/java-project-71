@@ -13,7 +13,7 @@ public class JsonFormatterTest {
     public void testFormat() throws JsonProcessingException {
         var diff = new NodeDiff();
         diff.setAction("added");
-        diff.setValueNew("value");
+        diff.setValue2("value");
         var data = Map.of("key", diff);
 
         Assertions.assertEquals(

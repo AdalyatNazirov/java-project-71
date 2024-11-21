@@ -24,18 +24,18 @@ public class StylishFormatter {
             sb.append("  ");
             switch (diff.getAction()) {
                 case "added":
-                    sb.append("+ ").append(key).append(": ").append(getJsonValue(diff.getValueNew()));
+                    sb.append("+ ").append(key).append(": ").append(getJsonValue(diff.getValue2()));
                     break;
                 case "deleted":
-                    sb.append("- ").append(key).append(": ").append(getJsonValue(diff.getValueOld()));
+                    sb.append("- ").append(key).append(": ").append(getJsonValue(diff.getValue1()));
                     break;
                 case "unchanged":
-                    sb.append("  ").append(key).append(": ").append(getJsonValue(diff.getValueNew()));
+                    sb.append("  ").append(key).append(": ").append(getJsonValue(diff.getValue2()));
                     break;
                 case "changed":
-                    sb.append("- ").append(key).append(": ").append(getJsonValue(diff.getValueOld())).append("\n");
+                    sb.append("- ").append(key).append(": ").append(getJsonValue(diff.getValue1())).append("\n");
                     sb.append("  ");
-                    sb.append("+ ").append(key).append(": ").append(getJsonValue(diff.getValueNew()));
+                    sb.append("+ ").append(key).append(": ").append(getJsonValue(diff.getValue2()));
                     break;
                 default:
                     break;

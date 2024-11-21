@@ -25,15 +25,15 @@ public class PlainFormatter {
                 case "added":
                     sb.append("Property '").append(key)
                             .append("' was added with value: ")
-                            .append(getPlainValue(diff.getValueNew()));
+                            .append(getPlainValue(diff.getValue2()));
                     break;
                 case "deleted":
                     sb.append("Property '").append(key).append("' was removed");
                     break;
                 case "changed":
                     sb.append("Property '").append(key).append("' was updated.")
-                            .append(" From ").append(getPlainValue(diff.getValueOld()))
-                            .append(" to ").append(getPlainValue(diff.getValueNew()));
+                            .append(" From ").append(getPlainValue(diff.getValue1()))
+                            .append(" to ").append(getPlainValue(diff.getValue2()));
                     break;
                 default:
                     newLine = false;
